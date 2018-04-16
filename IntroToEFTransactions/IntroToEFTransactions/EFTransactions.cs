@@ -22,6 +22,6 @@ namespace IntroToEFTransactions
         public string Action { get; set; }
         public int AccountNumber { get; set; }
         public decimal AmountChanged { get; set; }
-        public decimal newAmount { get; set; }
+        public decimal NewAmount { get; set; }
     }
 }

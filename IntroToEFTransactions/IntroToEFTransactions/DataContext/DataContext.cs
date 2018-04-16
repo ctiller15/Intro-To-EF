@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace IntroToEFTransactions.DataContext
+namespace IntroToEFTransactions.Data
 {
     class DataContext : DbContext
     {
@@ -13,5 +13,8 @@ namespace IntroToEFTransactions.DataContext
         {
 
         }
+
+        public DbSet<EFTransactions> EFTransactions { get; set; }
     }
+
 }
