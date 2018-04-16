@@ -127,11 +127,11 @@ namespace IntroToEFTransactions
             //dbContext.EFTransactions.Add(t9);
             //dbContext.EFTransactions.Add(t10);
             //dbContext.EFTransactions.Add(t11);
-            dbContext.EFTransactions.Add(t12);
+            //dbContext.EFTransactions.Add(t12);
 
             // save transactions to db.
             //dbContext.SaveChanges();
-            dbContext.SaveChanges();
+            //dbContext.SaveChanges();
 
             // SELECT
 
@@ -160,6 +160,23 @@ namespace IntroToEFTransactions
             {
                 Console.WriteLine(transaction.Timestamp);
             }
+            Console.ReadLine();
+
+            // Count all transactions for a given day and a given user.
+
+            var DayCount = dbContext.EFTransactions.Count(
+                transaction => transaction.Timestamp <= new DateTime(2012, 10, 16)
+                && transaction.Timestamp >= new DateTime(2012, 10, 15)
+                && transaction.AccountNumber == 66441);
+
+            Console.WriteLine(DayCount);
+            //foreach (var transaction in dbContext.EFTransactions)
+            //{
+            //    Console.WriteLine(transaction.Timestamp);
+            //    Console.WriteLine(new DateTime(2012, 10, 16));
+            //    Console.WriteLine(new DateTime(2012, 10, 15));
+            //    Console.WriteLine(transaction.AccountNumber);
+            //}
             Console.ReadLine();
 
         }
