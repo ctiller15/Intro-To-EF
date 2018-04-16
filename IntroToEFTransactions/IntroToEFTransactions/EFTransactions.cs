@@ -17,6 +17,11 @@ namespace IntroToEFTransactions
          newAmount(decimal)
          */
 
-
+        public int ID { get; set; }
+        public DateTime Timestamp { get; set; }
+        public string Action { get; set; }
+        public int AccountNumber { get; set; }
+        public decimal AmountChanged { get; set; }
+        public decimal newAmount { get; set; }
     }
 }
