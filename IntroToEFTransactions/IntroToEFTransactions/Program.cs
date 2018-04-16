@@ -107,7 +107,7 @@ namespace IntroToEFTransactions
             };
             var t12 = new EFTransactions
             {
-                Timestamp = new DateTime(2020, 10, 18),
+                Timestamp = new DateTime(2012, 10, 18),
                 Action = "Deposit",
                 AccountNumber = 66441,
                 AmountChanged = 778.42m,
@@ -121,12 +121,12 @@ namespace IntroToEFTransactions
             //dbContext.EFTransactions.Add(t3);
             //dbContext.EFTransactions.Add(t4);
             //dbContext.EFTransactions.Add(t5);
-            dbContext.EFTransactions.Add(t6);
-            dbContext.EFTransactions.Add(t7);
-            dbContext.EFTransactions.Add(t8);
-            dbContext.EFTransactions.Add(t9);
-            dbContext.EFTransactions.Add(t10);
-            dbContext.EFTransactions.Add(t11);
+            //dbContext.EFTransactions.Add(t6);
+            //dbContext.EFTransactions.Add(t7);
+            //dbContext.EFTransactions.Add(t8);
+            //dbContext.EFTransactions.Add(t9);
+            //dbContext.EFTransactions.Add(t10);
+            //dbContext.EFTransactions.Add(t11);
             dbContext.EFTransactions.Add(t12);
 
             // save transactions to db.
@@ -146,11 +146,22 @@ namespace IntroToEFTransactions
             //    Console.WriteLine(transaction.Timestamp > DateTime.Today);
             //}
 
+
+
+            Console.WriteLine("All transactions for today are...");
             foreach (var transaction in TodayTransactions)
             {
                 Console.WriteLine(transaction.Timestamp);
             }
             Console.ReadLine();
+
+            var TenMostRecent = dbContext.EFTransactions.Where(transaction => transaction.Timestamp < tomorrow && transaction.AccountNumber == 66441).OrderByDescending(item => item.Timestamp).Take(10);
+            foreach (var transaction in TenMostRecent)
+            {
+                Console.WriteLine(transaction.Timestamp);
+            }
+            Console.ReadLine();
+
         }
     }
 }
